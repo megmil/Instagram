@@ -2,13 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SchemeUserState</key>
-	<dict>
-		<key>Instagram.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
-		</dict>
-	</dict>
+	<key>client_Key</key>
+	<string>iSMvwEBcEdHwCyOfDBrkXSpWH5DOWDN3BIq9ISXS</string>
+	<key>app_ID</key>
+	<string>oa7n48lkuoj8CQdoX1uWvqchbHu7cZy6b0IP1Rx4</string>
 </dict>
 </plist>
