@@ -123,8 +123,33 @@
                     <view key="view" contentMode="scaleToFill" id="5Mq-by-bdB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="uVk-g6-94W">
+                                <rect key="frame" x="20" y="56" width="125" height="125"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="5u0-Ao-SVE"/>
+                                    <constraint firstAttribute="height" constant="125" id="Leu-Og-NRR"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="OoY-UY-bke" appends="YES" id="PYI-vP-Q6S"/>
+                                </connections>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write a caption..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J2V-5s-Tst">
+                                <rect key="frame" x="153" y="56" width="241" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="jfq-7k-azz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="J2V-5s-Tst" firstAttribute="leading" secondItem="uVk-g6-94W" secondAttribute="trailing" constant="8" id="3x9-07-Mp7"/>
+                            <constraint firstItem="jfq-7k-azz" firstAttribute="trailing" secondItem="J2V-5s-Tst" secondAttribute="trailing" constant="20" id="ISx-zZ-YV6"/>
+                            <constraint firstItem="uVk-g6-94W" firstAttribute="top" secondItem="jfq-7k-azz" secondAttribute="top" id="QOe-KA-je2"/>
+                            <constraint firstItem="J2V-5s-Tst" firstAttribute="top" secondItem="jfq-7k-azz" secondAttribute="top" id="ReH-1E-2Yc"/>
+                            <constraint firstItem="uVk-g6-94W" firstAttribute="leading" secondItem="jfq-7k-azz" secondAttribute="leading" constant="20" id="s5Z-Kn-vds"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VhE-HT-2F1">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="WN8-ac-RcJ">
@@ -133,6 +158,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="Lvv-xt-9RH" eventType="touchUpInside" id="1aW-kH-AmI"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="8Y5-OH-qGH">
@@ -141,13 +169,25 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Share"/>
+                                <connections>
+                                    <action selector="share:" destination="Lvv-xt-9RH" eventType="touchUpInside" id="aBe-oB-rI7"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="captionField" destination="J2V-5s-Tst" id="GPi-ot-8S1"/>
+                        <outlet property="imageView" destination="uVk-g6-94W" id="2Qq-91-HgI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LwG-kp-g4Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="OoY-UY-bke">
+                    <connections>
+                        <action selector="didTapImageView:" destination="Lvv-xt-9RH" id="eEf-TA-Gue"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3835" y="-529"/>
+            <point key="canvasLocation" x="3834.7826086956525" y="-529.01785714285711"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="hF5-iT-Qta">
@@ -273,6 +313,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="image_placeholder" width="375" height="375"/>
         <image name="insta_camera_btn" width="25" height="25"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
