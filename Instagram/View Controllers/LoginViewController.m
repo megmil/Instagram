@@ -25,20 +25,6 @@
     [self.loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
-- (void)showAlert {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Text Field(s)"
-                                                                   message:@"Please fill in username and password."
-                                                            preferredStyle:(UIAlertControllerStyleAlert)];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok"
-                                                     style:UIAlertActionStyleCancel
-                                                   handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    [alert addAction:action];
-    [self presentViewController:alert animated:YES completion:^{
-        return;
-    }];
-}
-
 - (IBAction)loginUser:(id)sender {
     if ([self.usernameField.text isEqual:@""] || [self.passwordField.text isEqual:@""]) {
         [self showAlert];
@@ -74,6 +60,20 @@
             }
         }];
     }
+}
+
+- (void)showAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Text Field(s)"
+                                                                   message:@"Please fill in username and password."
+                                                            preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok"
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:^{
+        return;
+    }];
 }
 
 @end

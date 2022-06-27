@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--AuthenticatedViewController-->
         <scene sceneID="ZnQ-Wa-mI8">
             <objects>
-                <tabBarController id="2DV-DE-a1Y" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="AuthenticatedViewController" title="AuthenticatedViewController" id="2DV-DE-a1Y" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O6m-uD-9fj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -78,6 +78,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Logout"/>
+                                <connections>
+                                    <action selector="logout:" destination="PjU-SK-hgD" eventType="touchUpInside" id="i72-t3-ZPX"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="lOv-Cv-Hqd">
@@ -162,10 +165,10 @@
             </objects>
             <point key="canvasLocation" x="2051" y="240"/>
         </scene>
-        <!--Login View Controller-->
+        <!--LoginViewController-->
         <scene sceneID="YOB-3x-kCP">
             <objects>
-                <viewController id="Cmv-rt-bMk" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="LoginViewController" id="Cmv-rt-bMk" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Ls-TA-8AG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
