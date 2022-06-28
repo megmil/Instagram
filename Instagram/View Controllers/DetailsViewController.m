@@ -38,6 +38,9 @@
     NSDate *date = self.post.createdAt;
     [self.timeLabel setText:[formatter stringFromDate:date]];
     
+    [self.post.author fetchIfNeeded];
+    [self.usernameLabel setText:self.post.author.username];
+    
     [self.captionLabel setText:self.post.caption];
 }
 
