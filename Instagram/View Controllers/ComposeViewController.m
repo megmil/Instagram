@@ -59,7 +59,6 @@
 }
 
 - (IBAction)share:(id)sender {
-    // TODO: share action
     [Post postUserImage:[self.imageView image] withCaption:[self.captionField text] withCompletion:nil];
     [self clear];
     [self dismissViewControllerAnimated:YES completion:nil];

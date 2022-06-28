@@ -396,6 +396,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                                <connections>
+                                    <action selector="likePost:" destination="7uv-Qz-6Ox" eventType="touchUpInside" id="2ec-G4-eA7"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Np6-Wy-9TJ">
                                 <rect key="frame" x="80" y="438" width="50" height="50"/>

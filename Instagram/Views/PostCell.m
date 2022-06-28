@@ -18,6 +18,8 @@
 }
 
 - (void)refreshData {
+    [self.post.author fetchIfNeeded];
+    
     PFFileObject *imageData = self.post.image;
     [imageData getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
         if (data) {
@@ -34,9 +36,7 @@
     NSDate *date = self.post.createdAt;
     [self.timeLabel setText:[formatter stringFromDate:date]];
     
-    [self.post.author fetchIfNeeded];
     [self.usernameLabel setText:self.post.author.username];
-    
     [self.captionLabel setText:self.post.caption];
 }
 

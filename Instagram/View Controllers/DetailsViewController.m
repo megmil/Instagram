@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.post.author fetchIfNeeded];
+    
     PFFileObject *imageData = self.post.image;
     [imageData getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
         if (data) {
@@ -38,10 +40,22 @@
     NSDate *date = self.post.createdAt;
     [self.timeLabel setText:[formatter stringFromDate:date]];
     
-    [self.post.author fetchIfNeeded];
-    [self.usernameLabel setText:self.post.author.username];
+    NSString *likeCountStr = [NSString stringWithFormat:@"Liked by %@ people", self.post.likeCount];
+    [self.likeLabel setText:likeCountStr];
     
     [self.captionLabel setText:self.post.caption];
+}
+
+- (IBAction)likePost:(id)sender {
+    [self.post incrementKey:@"likeCount"];
+    [self.post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSString *likeCountStr = [NSString stringWithFormat:@"Liked by %@ people", self.post.likeCount];
+            [self.likeLabel setText:likeCountStr];
+        } else {
+            NSLog(@"Unable to like post.");
+        }
+    }];
 }
 
 @end
