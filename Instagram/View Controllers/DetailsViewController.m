@@ -6,6 +6,7 @@
 //
 
 #import "DetailsViewController.h"
+#import "CommentsViewController.h"
 
 @interface DetailsViewController ()
 
@@ -21,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // TODO: move setup code into functions once complete
     
     [self.post.author fetchIfNeeded];
     
@@ -43,6 +46,9 @@
     NSString *likeCountStr = [NSString stringWithFormat:@"Liked by %@ people", self.post.likeCount];
     [self.likeLabel setText:likeCountStr];
     
+    NSString *commentCountStr = [NSString stringWithFormat:@"View all %@ comments", self.post.commentCount];
+    [self.commentLabel setText:commentCountStr];
+    
     [self.captionLabel setText:self.post.caption];
 }
 
@@ -56,6 +62,16 @@
             NSLog(@"Unable to like post.");
         }
     }];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqual:@"commentsSegue"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        CommentsViewController *commentsVC = (CommentsViewController*)navigationController.topViewController;
+        commentsVC.post = self.post;
+    }
 }
 
 @end

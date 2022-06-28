@@ -13,11 +13,9 @@
     [super awakeFromNib];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-}
-
 - (void)refreshData {
+    // TODO: move setup code into functions once complete
+    
     [self.post.author fetchIfNeeded];
     
     PFFileObject *imageData = self.post.image;
