@@ -27,7 +27,7 @@ The following **optional** features are implemented:
   - [ ] Display the profile photo with each post
   - [ ] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
-- [ ] User can comment on a post and see all comments for each post in the post details screen
+- [X] User can comment on a post and see all comments for each post in the post details screen
 - [X] User can like a post and see number of likes for each post in the post details screen
 - [X] Style the login page to look like the real Instagram login page
 - [X] Style the feed to look like the real Instagram feed
