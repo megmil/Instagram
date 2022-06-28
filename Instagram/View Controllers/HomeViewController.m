@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSMutableArray *posts;
+@property (nonatomic) BOOL isLoadingMoreData;
 
 @end
 
@@ -30,6 +31,7 @@
     self.tableView.dataSource = self;
     
     [self fetchPosts];
+    self.isLoadingMoreData = NO;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
@@ -45,7 +47,26 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             NSLog(@"Successfully fetched posts.");
+            self.isLoadingMoreData = NO;
             self.posts = (NSMutableArray *)posts;
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    [self.refreshControl endRefreshing];
+}
+
+- (void)fetchPostsSince:(NSDate *)date {
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query orderByDescending:@"createdAt"];
+    [query whereKey:@"createdAt" lessThan:date];
+    query.limit = 20;
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            NSLog(@"Successfully fetched more posts.");
+            [self.posts addObjectsFromArray:posts];
             [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -63,6 +84,14 @@
     cell.post = self.posts[indexPath.row];
     [cell refreshData];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(PostCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (cell.post == [self.posts lastObject] && !self.isLoadingMoreData) {
+        self.isLoadingMoreData = YES;
+        NSDate *date = cell.post.createdAt;
+        [self fetchPostsSince:date];
+    }
 }
 
 - (IBAction)logout:(id)sender {
