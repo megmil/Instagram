@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 @property (nonatomic, strong) Comment *comment;
+
 - (void)refreshData;
 
 @end
