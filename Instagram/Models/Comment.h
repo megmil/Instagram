@@ -11,8 +11,6 @@
 
 @interface Comment : PFObject<PFSubclassing>
 
-@property (nonatomic, strong) NSString *commentID; // TODO: remove?
-@property (nonatomic, strong) NSString *userID; // TODO: remove?
 @property (nonatomic, strong) PFUser *author;
 @property (nonatomic, strong) NSString *text;
 

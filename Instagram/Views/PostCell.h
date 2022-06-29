@@ -6,9 +6,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 #import "Post.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@protocol PostCellDelegate
+
+- (void)didTapUser:(PFUser *)user;
+
+@end
 
 @interface PostCell : UITableViewCell
 
@@ -24,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *detailsButton;
 
 @property (nonatomic, strong) Post *post;
+@property (nonatomic, weak) id<PostCellDelegate> delegate;
 
 - (void)refreshData;
 

@@ -87,26 +87,19 @@
                                                         <constraint firstAttribute="width" secondItem="y7c-QA-TSJ" secondAttribute="height" multiplier="1:1" id="mIa-DF-RNJ"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Ez-Ww-tQI">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Ez-Ww-tQI">
                                                     <rect key="frame" x="20" y="393" width="50" height="50"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="88z-IN-5vW"/>
                                                         <constraint firstAttribute="height" constant="50" id="dTx-iO-XPj"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="__megmiller__" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QF2-Zh-Oev">
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="__megmiller__" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QF2-Zh-Oev">
                                                     <rect key="frame" x="78" y="393" width="111" height="21"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="eoM-SW-gnr"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mykonos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIt-vC-9yW">
-                                                    <rect key="frame" x="78" y="422" width="69" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="2QC-3L-g4K"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -164,6 +157,7 @@
                                                     <buttonConfiguration key="configuration" style="plain" image="ellipsis" catalog="system"/>
                                                 </button>
                                             </subviews>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstItem="ctG-XT-6yF" firstAttribute="leading" secondItem="QF2-Zh-Oev" secondAttribute="trailing" constant="8" id="1FV-Xj-PSw"/>
                                                 <constraint firstItem="zVX-H0-9lP" firstAttribute="leading" secondItem="QgE-Ze-ibQ" secondAttribute="leadingMargin" id="2mx-YU-Ubf"/>
@@ -179,14 +173,12 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="G3I-Pm-9m7" secondAttribute="bottom" id="T81-I5-UR3"/>
                                                 <constraint firstItem="G3I-Pm-9m7" firstAttribute="top" secondItem="klU-26-yBz" secondAttribute="bottom" constant="8" id="TXW-zx-2vL"/>
                                                 <constraint firstItem="y7c-QA-TSJ" firstAttribute="leading" secondItem="QgE-Ze-ibQ" secondAttribute="leadingMargin" id="TZF-gB-aoV"/>
-                                                <constraint firstItem="qIt-vC-9yW" firstAttribute="leading" secondItem="4Ez-Ww-tQI" secondAttribute="trailing" constant="8" id="Uih-y0-fHx"/>
                                                 <constraint firstItem="QF2-Zh-Oev" firstAttribute="leading" secondItem="4Ez-Ww-tQI" secondAttribute="trailing" constant="8" id="Us3-0f-Xth"/>
                                                 <constraint firstItem="nxB-Lb-rLg" firstAttribute="leading" secondItem="GyB-Mw-8iK" secondAttribute="trailing" constant="10" id="W9X-Sp-0sq"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="GyB-Mw-8iK" secondAttribute="bottom" id="X7b-cV-ZfA"/>
                                                 <constraint firstItem="klU-26-yBz" firstAttribute="leading" secondItem="QgE-Ze-ibQ" secondAttribute="leadingMargin" id="b9M-7K-H29"/>
                                                 <constraint firstItem="4Ez-Ww-tQI" firstAttribute="top" secondItem="y7c-QA-TSJ" secondAttribute="bottom" constant="8" id="kRj-tj-lgs"/>
                                                 <constraint firstItem="nxB-Lb-rLg" firstAttribute="top" secondItem="klU-26-yBz" secondAttribute="bottom" constant="8" id="lHH-Wk-LhV"/>
-                                                <constraint firstItem="qIt-vC-9yW" firstAttribute="top" secondItem="QF2-Zh-Oev" secondAttribute="bottom" constant="8" id="mvI-jC-JFu"/>
                                                 <constraint firstItem="GyB-Mw-8iK" firstAttribute="leading" secondItem="G3I-Pm-9m7" secondAttribute="trailing" constant="10" id="pIN-dA-qIC"/>
                                                 <constraint firstItem="QF2-Zh-Oev" firstAttribute="top" secondItem="y7c-QA-TSJ" secondAttribute="bottom" constant="8" id="s8D-jy-E5r"/>
                                                 <constraint firstItem="klU-26-yBz" firstAttribute="top" secondItem="4Ez-Ww-tQI" secondAttribute="bottom" constant="8" id="tI6-pM-GAm"/>
@@ -198,7 +190,6 @@
                                             <outlet property="commentButton" destination="G3I-Pm-9m7" id="nki-gX-eyM"/>
                                             <outlet property="detailsButton" destination="nxB-Lb-rLg" id="HvJ-kp-32E"/>
                                             <outlet property="likeButton" destination="zVX-H0-9lP" id="3AP-JP-A6p"/>
-                                            <outlet property="locationLabel" destination="qIt-vC-9yW" id="1eb-05-1Pv"/>
                                             <outlet property="messageButton" destination="GyB-Mw-8iK" id="QGr-A0-JDn"/>
                                             <outlet property="postImageView" destination="y7c-QA-TSJ" id="aOR-Rn-9My"/>
                                             <outlet property="timeLabel" destination="ctG-XT-6yF" id="G8V-LC-Jvf"/>
@@ -245,6 +236,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="yee-Hj-fOb" id="JiF-wG-CLj"/>
+                        <segue destination="mdt-LR-8Xh" kind="presentation" identifier="profileSegue" id="5sL-eh-G61"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KKU-UU-vEk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -566,7 +558,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Jft-lV-XV1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Jft-lV-XV1">
                                 <rect key="frame" x="20" y="56" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="5UQ-ws-j5y"/>
@@ -580,7 +572,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OHg-x0-rko">
-                                <rect key="frame" x="20" y="205" width="374" height="608"/>
+                                <rect key="frame" x="20" y="205" width="374" height="637"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eZO-Nl-raE">
                                     <size key="itemSize" width="128" height="128"/>
@@ -589,14 +581,14 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileCell" id="bMP-Ts-wff">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileCell" id="bMP-Ts-wff" customClass="ProfileCell">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tFv-2S-bsl">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="NOw-Y0-ze7">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="NOw-Y0-ze7">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="NOw-Y0-ze7" secondAttribute="height" multiplier="1:1" id="WNP-4e-VOd"/>
@@ -610,6 +602,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="NOw-Y0-ze7" secondAttribute="trailing" id="g1n-EC-MyB"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="userPostImageView" destination="NOw-Y0-ze7" id="Sic-4s-ytz"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -617,6 +612,9 @@
                                 <rect key="frame" x="135" y="90.5" width="94" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Edit profile"/>
+                                <connections>
+                                    <action selector="editProfile:" destination="SLT-kf-xKv" eventType="touchUpInside" id="RKl-2E-Tbb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="H4T-pM-bw5"/>
@@ -635,6 +633,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HZK-yr-ZKT"/>
+                    <connections>
+                        <outlet property="collectionView" destination="OHg-x0-rko" id="lFU-fW-cob"/>
+                        <outlet property="editProfileButton" destination="cQN-Yt-L7E" id="kMk-Nz-ZjP"/>
+                        <outlet property="profileImageView" destination="Jft-lV-XV1" id="808-SL-Hye"/>
+                        <outlet property="usernameLabel" destination="qCP-GL-j0j" id="FG7-LS-1Gz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdC-nL-bad" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -747,6 +751,9 @@
             <point key="canvasLocation" x="-633.33333333333337" y="-238.39285714285714"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="5sL-eh-G61"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="bubble.left" catalog="system" width="128" height="110"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>

@@ -9,8 +9,6 @@
 
 @implementation Comment
 
-@dynamic commentID;
-@dynamic userID;
 @dynamic author;
 @dynamic text;
     

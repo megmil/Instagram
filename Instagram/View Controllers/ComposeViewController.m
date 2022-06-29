@@ -25,15 +25,14 @@
     UIImage *placeholderImage = [UIImage imageNamed:@"image_placeholder"];
     [self.imageView setImage:placeholderImage];
     [self.captionField setText:@""];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage]; // TODO: remove?
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    
     [self.imageView setImage:editedImage];
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -44,9 +43,7 @@
 
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
+    } else {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
 
@@ -55,13 +52,11 @@
 
 - (IBAction)cancel:(id)sender {
     [self clear];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)share:(id)sender {
     [Post postUserImage:[self.imageView image] withCaption:[self.captionField text] withCompletion:nil];
     [self clear];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
