@@ -283,14 +283,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4Ni-8P-RyJ">
+                                <rect key="frame" x="20" y="186" width="125" height="4"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uploading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFq-nw-E0M">
+                                <rect key="frame" x="56" y="195" width="53.5" height="11"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <color key="textColor" systemColor="systemGray2Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jfq-7k-azz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="J2V-5s-Tst" firstAttribute="leading" secondItem="uVk-g6-94W" secondAttribute="trailing" constant="8" id="3x9-07-Mp7"/>
+                            <constraint firstItem="4Ni-8P-RyJ" firstAttribute="width" secondItem="uVk-g6-94W" secondAttribute="width" id="42A-ek-nw0"/>
+                            <constraint firstItem="4Ni-8P-RyJ" firstAttribute="top" secondItem="uVk-g6-94W" secondAttribute="bottom" constant="5" id="9yf-lA-kZy"/>
                             <constraint firstItem="jfq-7k-azz" firstAttribute="trailing" secondItem="J2V-5s-Tst" secondAttribute="trailing" constant="20" id="ISx-zZ-YV6"/>
+                            <constraint firstItem="mFq-nw-E0M" firstAttribute="top" secondItem="4Ni-8P-RyJ" secondAttribute="bottom" constant="5" id="Jcf-7O-G58"/>
                             <constraint firstItem="uVk-g6-94W" firstAttribute="top" secondItem="jfq-7k-azz" secondAttribute="top" id="QOe-KA-je2"/>
                             <constraint firstItem="J2V-5s-Tst" firstAttribute="top" secondItem="jfq-7k-azz" secondAttribute="top" id="ReH-1E-2Yc"/>
+                            <constraint firstItem="mFq-nw-E0M" firstAttribute="centerX" secondItem="4Ni-8P-RyJ" secondAttribute="centerX" id="aQZ-8Z-NPh"/>
+                            <constraint firstItem="4Ni-8P-RyJ" firstAttribute="leading" secondItem="jfq-7k-azz" secondAttribute="leading" constant="20" id="jet-hk-Gpu"/>
                             <constraint firstItem="uVk-g6-94W" firstAttribute="leading" secondItem="jfq-7k-azz" secondAttribute="leading" constant="20" id="s5Z-Kn-vds"/>
                         </constraints>
                     </view>
@@ -321,6 +335,8 @@
                     <connections>
                         <outlet property="captionField" destination="J2V-5s-Tst" id="GPi-ot-8S1"/>
                         <outlet property="imageView" destination="uVk-g6-94W" id="2Qq-91-HgI"/>
+                        <outlet property="progressLabel" destination="mFq-nw-E0M" id="V24-zx-kJ0"/>
+                        <outlet property="progressView" destination="4Ni-8P-RyJ" id="sgW-LV-zRV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LwG-kp-g4Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
