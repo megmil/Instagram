@@ -53,6 +53,9 @@
             [self.userImageView setImage:userImage];
         }
     }];
+    
+    [self.userImageView.layer setCornerRadius:25];
+    [self.userImageView.layer setMasksToBounds:YES];
 }
 
 - (void)loadLabels {
