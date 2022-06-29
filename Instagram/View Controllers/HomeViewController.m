@@ -10,10 +10,11 @@
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
 #import "DetailsViewController.h"
+#import "ProfileViewController.h"
 #import "PostCell.h"
 #import <Parse/Parse.h>
 
-@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, PostCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
@@ -82,6 +83,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     cell.post = self.posts[indexPath.row];
+    cell.delegate = self;
     [cell refreshData];
     return cell;
 }
@@ -92,6 +94,10 @@
         NSDate *date = cell.post.createdAt;
         [self fetchPostsSince:date];
     }
+}
+
+- (void)didTapUser:(PFUser *)user {
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
 }
 
 - (IBAction)logout:(id)sender {
@@ -113,6 +119,14 @@
         UINavigationController *navigationController = [segue destinationViewController];
         DetailsViewController *detailsVC = (DetailsViewController*)navigationController.topViewController;
         detailsVC.post = self.posts[myIndexPath.row];
+    } else if ([segue.identifier isEqual:@"profileSegue"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ProfileViewController *profileVC = (ProfileViewController*)navigationController.topViewController;
+        if ([sender isKindOfClass:[PFUser class]]) {
+            profileVC.user = sender;
+        } else {
+            profileVC.user = [PFUser currentUser];
+        }
     }
 }
 
