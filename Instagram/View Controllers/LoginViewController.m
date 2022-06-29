@@ -21,22 +21,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self configureLoginButton];
+}
+
+- (void)configureLoginButton {
     [self.loginButton setTitle:@"Log in" forState:UIControlStateNormal];
     [self.loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 - (IBAction)loginUser:(id)sender {
-    if ([self.usernameField.text isEqual:@""] || [self.passwordField.text isEqual:@""]) {
+    if ([self isFieldEmpty]) {
         [self showAlert];
     } else {
         NSString *username = self.usernameField.text;
         NSString *password = self.passwordField.text;
         
         [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
-            if (error != nil) {
-                NSLog(@"User log in failed: %@", error.localizedDescription);
-            } else {
-                NSLog(@"User logged in successfully");
+            if (!error) {
                 [self performSegueWithIdentifier:@"tabSegue" sender:self];
             }
         }];
@@ -44,7 +45,7 @@
 }
 
 - (IBAction)registerUser:(id)sender {
-    if ([self.usernameField.text isEqual:@""] || [self.passwordField.text isEqual:@""]) {
+    if ([self isFieldEmpty]) {
         [self showAlert];
     } else {
         PFUser *newUser = [PFUser user];
@@ -52,14 +53,15 @@
         newUser.password = self.passwordField.text;
             
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
-            if (error != nil) {
-                NSLog(@"Error: %@", error.localizedDescription);
-            } else {
-                NSLog(@"User registered successfully");
+            if (!error) {
                 [self performSegueWithIdentifier:@"tabSegue" sender:self];
             }
         }];
     }
+}
+
+- (BOOL)isFieldEmpty {
+    return [self.usernameField.text isEqual:@""] || [self.passwordField.text isEqual:@""];
 }
 
 - (void)showAlert {

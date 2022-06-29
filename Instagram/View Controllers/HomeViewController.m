@@ -6,7 +6,6 @@
 //
 
 #import "HomeViewController.h"
-#import "AppDelegate.h"
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
 #import "DetailsViewController.h"
@@ -34,6 +33,10 @@
     [self fetchPosts];
     self.isLoadingMoreData = NO;
     
+    [self configureRefreshControl];
+}
+
+- (void)configureRefreshControl {
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
@@ -46,34 +49,29 @@
     query.limit = 20;
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
-        if (posts != nil) {
-            NSLog(@"Successfully fetched posts.");
-            self.isLoadingMoreData = NO;
+        if (posts) {
             self.posts = (NSMutableArray *)posts;
+            self.isLoadingMoreData = NO;
             [self.tableView reloadData];
-        } else {
-            NSLog(@"%@", error.localizedDescription);
         }
     }];
+    
     [self.refreshControl endRefreshing];
 }
 
 - (void)fetchPostsSince:(NSDate *)date {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    [query orderByDescending:@"createdAt"];
     [query whereKey:@"createdAt" lessThan:date];
+    [query orderByDescending:@"createdAt"];
     query.limit = 20;
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
-        if (posts != nil) {
-            NSLog(@"Successfully fetched more posts.");
+        if (posts) {
             [self.posts addObjectsFromArray:posts];
+            self.isLoadingMoreData = NO;
             [self.tableView reloadData];
-        } else {
-            NSLog(@"%@", error.localizedDescription);
         }
     }];
-    [self.refreshControl endRefreshing];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -82,17 +80,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
-    cell.post = self.posts[indexPath.row];
     cell.delegate = self;
+    cell.post = self.posts[indexPath.row];
     [cell refreshData];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(PostCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (cell.post == [self.posts lastObject] && !self.isLoadingMoreData) {
+    if ([cell.post isEqual:[self.posts lastObject]] && !self.isLoadingMoreData) {
         self.isLoadingMoreData = YES;
-        NSDate *date = cell.post.createdAt;
-        [self fetchPostsSince:date];
+        [self fetchPostsSince:cell.post.createdAt];
     }
 }
 
@@ -105,10 +102,8 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     sceneDelegate.window.rootViewController = loginViewController;
+    [PFUser logOutInBackground];
     [self dismissViewControllerAnimated:YES completion:nil];
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        NSLog(@"User logged out.");
-    }];
 }
 
 #pragma mark - Navigation

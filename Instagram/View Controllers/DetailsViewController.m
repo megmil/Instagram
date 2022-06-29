@@ -22,44 +22,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self loadLabels];
+    [self loadImage];
+}
+
+- (void)loadLabels {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd/MM/yyyy HH:mm"];
+    NSDate *date = self.post.createdAt;
+    [self.timeLabel setText:[formatter stringFromDate:date]];
     
-    // TODO: move setup code into functions once complete
-    
-    [self.post.author fetchIfNeeded];
-    
+    [self.captionLabel setText:self.post.caption];
+
+    [self refreshLikesLabel];
+    [self refreshCommentsLabel];
+}
+
+- (void)loadImage {
     PFFileObject *imageData = self.post.image;
     [imageData getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
         if (data) {
             UIImage *postImage = [UIImage imageWithData:data];
             [self.postImageView setImage:postImage];
         }
-        else {
-            NSLog(@"Unable to load image.");
-        }
     }];
+}
 
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd/MM/yyyy HH:mm"];
-    NSDate *date = self.post.createdAt;
-    [self.timeLabel setText:[formatter stringFromDate:date]];
-    
+- (void)refreshLikesLabel {
     NSString *likeCountStr = [NSString stringWithFormat:@"Liked by %@ people", self.post.likeCount];
     [self.likeLabel setText:likeCountStr];
-    
+}
+
+- (void)refreshCommentsLabel {
     NSString *commentCountStr = [NSString stringWithFormat:@"View all %@ comments", self.post.commentCount];
     [self.commentLabel setText:commentCountStr];
-    
-    [self.captionLabel setText:self.post.caption];
 }
 
 - (IBAction)likePost:(id)sender {
     [self.post incrementKey:@"likeCount"];
     [self.post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
-            NSString *likeCountStr = [NSString stringWithFormat:@"Liked by %@ people", self.post.likeCount];
-            [self.likeLabel setText:likeCountStr];
-        } else {
-            NSLog(@"Unable to like post.");
+            [self refreshLikesLabel];
         }
     }];
 }
