@@ -18,26 +18,31 @@
 }
 
 - (void)refreshData {
-    // TODO: move setup code into functions once complete
-    
     [self.post.author fetchIfNeeded];
+    [self configureTapRecognizers];
+    [self loadImages];
+    [self loadLabels];
+}
+
+- (void)configureTapRecognizers {
+    UITapGestureRecognizer *tapUsername = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                  action:@selector(showProfile)];
+    UITapGestureRecognizer *tapUserProfile = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                     action:@selector(showProfile)];
     
-    UITapGestureRecognizer *tapUsername = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showProfile)];
     tapUsername.delegate = self;
-    [self.usernameLabel addGestureRecognizer:tapUsername];
-    
-    UITapGestureRecognizer *tapUserProfile = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showProfile)];
     tapUserProfile.delegate = self;
-    [self.userImageView addGestureRecognizer:tapUserProfile];
     
+    [self.usernameLabel addGestureRecognizer:tapUsername];
+    [self.userImageView addGestureRecognizer:tapUserProfile];
+}
+
+- (void)loadImages {
     PFFileObject *imageData = self.post.image;
     [imageData getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
         if (data) {
             UIImage *postImage = [UIImage imageWithData:data];
             [self.postImageView setImage:postImage];
-        }
-        else {
-            NSLog(@"Unable to load image.");
         }
     }];
     
@@ -47,22 +52,20 @@
             UIImage *userImage = [UIImage imageWithData:data];
             [self.userImageView setImage:userImage];
         }
-        else {
-            NSLog(@"Unable to load image.");
-        }
     }];
+}
+
+- (void)loadLabels {
+    [self.usernameLabel setText:self.post.author.username];
+    [self.captionLabel setText:self.post.caption];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MM/dd/yyyy HH:mm"];
     NSDate *date = self.post.createdAt;
     [self.timeLabel setText:[formatter stringFromDate:date]];
-    
-    [self.usernameLabel setText:self.post.author.username];
-    [self.captionLabel setText:self.post.caption];
 }
 
 - (void)showProfile {
-    NSLog(@"tap");
     [self.delegate didTapUser:self.post.author];
 }
 

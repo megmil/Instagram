@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ProfileCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *userPostImageView;
+
 @property (nonatomic, strong) Post *post;
 
 - (void)refreshData;

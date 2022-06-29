@@ -16,9 +16,6 @@
             UIImage *postImage = [UIImage imageWithData:data];
             [self.userPostImageView setImage:postImage];
         }
-        else {
-            NSLog(@"Unable to load image.");
-        }
     }];
 }
 
