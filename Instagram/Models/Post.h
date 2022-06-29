@@ -19,6 +19,7 @@
 
 + (void) postUserImage:( UIImage * _Nullable )image withCaption:( NSString * _Nullable )caption
         withCompletion:(PFBooleanResultBlock  _Nullable)completion;
+
 + (PFFileObject * _Nullable)getPFFileFromImage:(UIImage * _Nullable)image;
 
 @end

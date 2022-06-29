@@ -18,8 +18,6 @@
 }
 
 - (void)refreshData {
-    // TODO: move setup code into functions once complete
-    
     [self.post.author fetchIfNeeded];
     [self configureTapRecognizers];
     [self loadImages];
