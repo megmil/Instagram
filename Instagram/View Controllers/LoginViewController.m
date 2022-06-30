@@ -60,6 +60,10 @@
     }
 }
 
+- (IBAction)didTapScreen:(id)sender {
+    [self.view endEditing:YES];
+}
+
 - (BOOL)isFieldEmpty {
     return [self.usernameField.text isEqual:@""] || [self.passwordField.text isEqual:@""];
 }

@@ -32,7 +32,7 @@
         <scene sceneID="A52-f9-JSL">
             <objects>
                 <navigationController id="mdt-LR-8Xh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="uyJ-c1-IYt"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile_tab" id="uyJ-c1-IYt"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NoV-dd-F6A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -49,7 +49,7 @@
         <scene sceneID="5hs-M9-QNy">
             <objects>
                 <navigationController id="m0d-fb-zUe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="ktf-nz-Ds8"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="insta_camera_btn" id="ktf-nz-Ds8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Hj-vW-qVq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -227,7 +227,7 @@
                                 <rect key="frame" x="296.5" y="8.5" width="97.5" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="insta_camera_btn"/>
+                                <buttonConfiguration key="configuration" style="plain" image="camera" catalog="system"/>
                                 <connections>
                                     <segue destination="QmQ-PA-zYy" kind="presentation" id="O6n-6R-ll8"/>
                                 </connections>
@@ -542,6 +542,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="q1b-vj-YNZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="OYY-XT-Vav" firstAttribute="leading" secondItem="q1b-vj-YNZ" secondAttribute="leading" id="9wu-70-QtZ"/>
                             <constraint firstItem="IQA-Ra-uoH" firstAttribute="leading" secondItem="rYp-fg-ZhF" secondAttribute="trailing" constant="8" id="A27-2q-ZFl"/>
@@ -554,6 +555,9 @@
                             <constraint firstItem="q1b-vj-YNZ" firstAttribute="bottom" secondItem="IQA-Ra-uoH" secondAttribute="bottom" constant="50" id="vcy-hf-9EW"/>
                             <constraint firstItem="IQA-Ra-uoH" firstAttribute="height" secondItem="rYp-fg-ZhF" secondAttribute="height" multiplier="0.941176" id="xxe-QV-BM1"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Z8R-JQ-9Y6" appends="YES" id="ryY-in-5oA"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="eB7-wn-rhU"/>
                     <connections>
@@ -563,6 +567,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIA-Zu-4aR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="S4m-mB-7RK" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="Z8R-JQ-9Y6">
+                    <connections>
+                        <action selector="didTapView:" destination="tQF-u9-D5z" id="fWR-XV-4Qa"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5998.5507246376819" y="220.98214285714286"/>
         </scene>
@@ -736,6 +745,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jlL-De-Zez"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="G5V-j3-Kr8" secondAttribute="bottom" constant="30" id="2BY-w3-Vfr"/>
                             <constraint firstItem="G5V-j3-Kr8" firstAttribute="leading" secondItem="jlL-De-Zez" secondAttribute="leading" constant="20" id="7dS-8H-rIh"/>
@@ -755,6 +765,9 @@
                             <constraint firstItem="jlL-De-Zez" firstAttribute="trailing" secondItem="ehG-X4-GQf" secondAttribute="trailing" constant="20" id="sP1-xQ-lFF"/>
                             <constraint firstItem="jlL-De-Zez" firstAttribute="trailing" secondItem="G5V-j3-Kr8" secondAttribute="trailing" constant="20" id="tvK-ho-dFU"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Qnh-tu-bPF" appends="YES" id="9Sm-TH-43F"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="VBG-Hr-BYC"/>
                     <connections>
@@ -766,6 +779,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s1M-fT-sGR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Qnh-tu-bPF">
+                    <connections>
+                        <action selector="didTapScreen:" destination="Cmv-rt-bMk" id="Sgf-u2-rwy"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-633.33333333333337" y="-238.39285714285714"/>
         </scene>
@@ -775,11 +793,13 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bubble.left" catalog="system" width="128" height="110"/>
+        <image name="camera" catalog="system" width="128" height="94"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="image_placeholder" width="375" height="375"/>
         <image name="insta_camera_btn" width="25" height="25"/>
         <image name="paperplane" catalog="system" width="128" height="118"/>
+        <image name="profile_tab" width="25" height="25"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

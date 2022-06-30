@@ -32,11 +32,43 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    UIImage *resizedImage = [self compress:editedImage];
+    [self.imageView setImage:resizedImage];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (UIImage *)compress:(UIImage *)image {
+    NSInteger maxBytes = 10000000; // 10 MB
+    CGFloat compressionQuality = 1.0;
+    
+    NSData *imgData = UIImageJPEGRepresentation(image, compressionQuality);
+    if ([imgData length] < maxBytes) {
+        return image;
+    }
+    
+    CGFloat adjustment = 0.05;
+    NSInteger currentByteSize = [imgData length];
+    while (currentByteSize >= maxBytes) {
+        compressionQuality -= adjustment;
+        if (compressionQuality < 0) {
+            return image;
+        }
+        imgData = UIImageJPEGRepresentation(image, compressionQuality);
+        currentByteSize = [imgData length];
+    }
+    
+    return [UIImage imageWithData:imgData];
+}
+
 - (IBAction)didTapImageView:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
-
+    
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     } else {
@@ -60,14 +92,6 @@
             [self clear];
         }
     }];
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker
-didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    [self.imageView setImage:editedImage];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)hideProgress {

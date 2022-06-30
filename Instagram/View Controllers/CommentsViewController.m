@@ -44,4 +44,8 @@
     }];
 }
 
+- (IBAction)didTapView:(id)sender {
+    [self.view endEditing:YES];
+}
+
 @end
