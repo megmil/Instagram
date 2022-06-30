@@ -35,12 +35,13 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- Round profile pictures
+- Tap screen to dismiss keyboard when inputting username/password/comment
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. The difference between [self.field text] vs self.field.text
+2. How to hide Parse from the View Controllers
 
 ## Video Walkthrough
 
@@ -59,6 +60,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 ## Notes
 
 Describe any challenges encountered while building the app.
+- Resizing the image based on bytesize
 
 ## License
 
