@@ -24,7 +24,7 @@
     [self hideProgress];
 }
 
-- (void)clear {
+- (void)resetAndDismissView {
     UIImage *placeholderImage = [UIImage imageNamed:@"image_placeholder"];
     [self.imageView setImage:placeholderImage];
     [self.captionField setText:@""];
@@ -43,25 +43,25 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 
 - (UIImage *)compress:(UIImage *)image {
     NSInteger maxBytes = 10000000; // 10 MB
-    CGFloat compressionQuality = 1.0;
+    CGFloat compressionQuality = 1.0f;
     
-    NSData *imgData = UIImageJPEGRepresentation(image, compressionQuality);
-    if ([imgData length] < maxBytes) {
+    NSData *imageData = UIImageJPEGRepresentation(image, compressionQuality);
+    if ([imageData length] < maxBytes) {
         return image;
     }
     
-    CGFloat adjustment = 0.05;
-    NSInteger currentByteSize = [imgData length];
+    CGFloat adjustment = 0.05f;
+    NSInteger currentByteSize = [imageData length];
     while (currentByteSize >= maxBytes) {
         compressionQuality -= adjustment;
         if (compressionQuality < 0) {
             return image;
         }
-        imgData = UIImageJPEGRepresentation(image, compressionQuality);
-        currentByteSize = [imgData length];
+        imageData = UIImageJPEGRepresentation(image, compressionQuality);
+        currentByteSize = [imageData length];
     }
     
-    return [UIImage imageWithData:imgData];
+    return [UIImage imageWithData:imageData];
 }
 
 - (IBAction)didTapImageView:(id)sender {
@@ -79,17 +79,18 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 }
 
 - (IBAction)cancel:(id)sender {
-    [self clear];
+    [self resetAndDismissView];
 }
 
 - (IBAction)share:(id)sender {
     [self startProgress];
     
-    [Post postUserImage:[self.imageView image] withCaption:[self.captionField text] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    [Post postUserImage:[self.imageView image] withCaption:[self.captionField text]
+         withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             [self endProgress];
         } else {
-            [self clear];
+            [self resetAndDismissView];
         }
     }];
 }
@@ -102,13 +103,13 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 - (void)startProgress {
     [self.progressView setHidden:NO];
     [self.progressLabel setHidden:NO];
-    [self animateProgressBarWithDuration:1.7];
+    [self animateProgressBarWithDuration:1.7f];
 }
 
 - (void)endProgress {
     [self.progressView setProgress:1 animated:YES];
     [self.progressLabel setHidden:YES];
-    [self performSelector:@selector(clear) withObject:self afterDelay:0.7];
+    [self performSelector:@selector(resetAndDismissView) withObject:self afterDelay:0.7];
 }
 
 - (void)animateProgressBarWithDuration:(CGFloat)duration {

@@ -14,7 +14,7 @@
 @property (nonatomic, strong) PFUser *author;
 @property (nonatomic, strong) NSString *text;
 
-+ (void) postComment:(NSString * _Nullable)text forPost:(Post * _Nonnull)post
-      withCompletion:(PFBooleanResultBlock _Nullable)completion;
++ (void) postCommentWithText:(NSString * _Nullable)text forPost:(Post * _Nonnull)post
+              withCompletion:(PFBooleanResultBlock _Nullable)completion;
 
 @end

@@ -16,14 +16,14 @@
     return @"Comment";
 }
 
-+ (void)postComment:(NSString * _Nullable)text forPost:(Post *)post
-     withCompletion:(PFBooleanResultBlock _Nullable)completion {
++ (void)postCommentWithText:(NSString * _Nullable)text forPost:(Post *)post
+             withCompletion:(PFBooleanResultBlock _Nullable)completion {
     
     Comment *newComment = [Comment new];
     newComment.author = [PFUser currentUser];
     newComment.text = text;
     
-    [newComment saveInBackgroundWithBlock:completion];
+    [newComment saveInBackgroundWithBlock:completion]; // TODO: addCommentToPost
     
     [post incrementKey:@"commentCount"];
     [post addObject:newComment forKey:@"comments"];

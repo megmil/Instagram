@@ -35,8 +35,8 @@
 }
 
 - (IBAction)postComment:(id)sender {
-    [Comment postComment:[self.commentField text] forPost:self.post
-          withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    [Comment postCommentWithText:[self.commentField text] forPost:self.post
+                  withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             self.commentField.text = @"";
             [self.tableView reloadData];

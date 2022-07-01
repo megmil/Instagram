@@ -49,13 +49,13 @@
 }
 
 - (void)refreshLikesLabel {
-    NSString *likeCountStr = [NSString stringWithFormat:@"Liked by %@ people", self.post.likeCount];
-    [self.likeLabel setText:likeCountStr];
+    NSString *likeCountString = [NSString stringWithFormat:@"Liked by %@ people", self.post.likeCount];
+    [self.likeLabel setText:likeCountString];
 }
 
 - (void)refreshCommentsLabel {
-    NSString *commentCountStr = [NSString stringWithFormat:@"View all %@ comments", self.post.commentCount];
-    [self.commentLabel setText:commentCountStr];
+    NSString *commentCountString = [NSString stringWithFormat:@"View all %@ comments", self.post.commentCount];
+    [self.commentLabel setText:commentCountString];
 }
 
 - (IBAction)likePost:(id)sender {
