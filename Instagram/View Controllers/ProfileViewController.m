@@ -46,6 +46,8 @@
             [self.profileImageView setImage:profileImage];
         }
     }];
+    [self.profileImageView.layer setCornerRadius:50];
+    [self.profileImageView.layer setMasksToBounds:YES];
     
     [self.usernameLabel setText:self.user.username];
     

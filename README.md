@@ -2,7 +2,7 @@
 
 **Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **10** hours spent in total
+Time spent: **15** hours spent in total
 
 ## User Stories
 
@@ -18,7 +18,7 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Run your app on your phone and use the camera to take the photo
+- [X] Run your app on your phone and use the camera to take the photo
 - [X] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling
 - [X] Show the username and creation time for each post
 - [X] User can use a Tab Bar to switch between a Home Feed tab (all posts) and a Profile tab (only posts published by the current user)
@@ -26,7 +26,7 @@ The following **optional** features are implemented:
   - [X] Allow the logged in user to add a profile photo
   - [X] Display the profile photo with each post
   - [X] Tapping on a post's username or profile photo goes to that user's profile page
-- [ ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
+- [X] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
 - [X] User can comment on a post and see all comments for each post in the post details screen
 - [X] User can like a post and see number of likes for each post in the post details screen
 - [X] Style the login page to look like the real Instagram login page
@@ -35,18 +35,19 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- Round profile pictures
+- Tap screen to dismiss keyboard when inputting username/password/comment
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. The difference between [self.field text] vs self.field.text
+2. How to hide Parse from the View Controllers
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://submissions.us-east-1.linodeobjects.com/metau_ios/BW4ueBVw.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [Kap](https://getkap.co/).
 
@@ -59,6 +60,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 ## Notes
 
 Describe any challenges encountered while building the app.
+- Resizing the image based on bytesize
 
 ## License
 

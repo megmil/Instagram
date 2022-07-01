@@ -18,8 +18,6 @@
 }
 
 - (void)refreshData {
-    // TODO: move setup code into functions once complete
-    
     [self.post.author fetchIfNeeded];
     [self configureTapRecognizers];
     [self loadImages];
@@ -55,6 +53,9 @@
             [self.userImageView setImage:userImage];
         }
     }];
+    
+    [self.userImageView.layer setCornerRadius:25];
+    [self.userImageView.layer setMasksToBounds:YES];
 }
 
 - (void)loadLabels {
